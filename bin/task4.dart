@@ -1,4 +1,5 @@
 import 'dart:io';
+
 void main() {
   //Task1 --> Avg
   // double sum = 0;
@@ -10,7 +11,7 @@ void main() {
   // print('Enter number of items');
   // int numberOfItems = int.parse(stdin.readLineSync()!);
   // for (int i = 0; i < numberOfItems; i++) {
-  //   print("Enter number : ");
+  //   print("Enter number ${i+1}: ");
   //   input = double.parse(stdin.readLineSync()!);
   //   if (input % 2 == 0) {
   //     print('Input is $input is even number ');
@@ -45,6 +46,68 @@ void main() {
   // print("Sum is : $sum , Average is : $avg");
   // print("Max : $max");
   // print("Min : $min");
+  //---------------------------------------------------------------------------------------------------------------------
+  // // task1 modified
+
+  double sum = 0;
+  double avg;
+  int input;
+  // bool isPrime = true;
+  int min = 999999999999999;
+  int max = -999999999999999;
+  String even = 'Even : ';
+  String odd = 'Odd : ';
+  String prime = 'Prime : ';
+  print('Enter number of items');
+  int numberOfItems = int.parse(stdin.readLineSync()!);
+  for (int i = 0; i < numberOfItems; i++) {
+    print("Enter number ${i + 1}: ");
+    input = int.parse(stdin.readLineSync()!);
+    if (input % 2 == 0) {
+      even = '$even ${input.toString()}';
+    } else if (input % 2 != 0) {
+      odd = '$odd  ${input.toString()}';
+    }
+
+    int num = input;
+    bool isPrime = true;
+
+    if (num <= 1) {
+      isPrime = false;
+    } else {
+      for (int i = 2; i <= num / 2; i++) {
+        if (num % i == 0) {
+          isPrime = false;
+          break;
+        }
+      }
+    }
+
+    if (isPrime) {
+      prime = '$prime  ${input.toString()}';
+    }
+
+    if (min >= input) {
+      min = input;
+    }
+    if (max <= input) {
+      max = input;
+    }
+    sum += input;
+  }
+
+  avg = sum / numberOfItems;
+  print(
+      '--------------------------------------------------------------------------');
+  print(even);
+  print('');
+  print(odd);
+  print('');
+  print(prime);
+  print('');
+  print("Sum is : $sum , Average is : $avg\n");
+  print("Max : $max\n");
+  print("Min : $min\n");
 //------------------------------------------------------------------------------------------------------------
   //Task 2 --> Loop Drawing
 
